@@ -1,0 +1,20 @@
+h2 {
+    font-size: 25px;
+}
+
+input {
+    width: 500px;
+}
+
+input, button{
+    font-size: 22px;
+}
+
+#disclaimer {
+    font-size: 14px;
+    margin-top:10px;
+}
+
+#text-dump{
+    overflow-wrap: break-word;
+}
