@@ -17,7 +17,7 @@ export default function Home() {
       <h1>Website Text Sorter</h1>
       <h2>Enter URL (excluding https://):</h2>
       <div>
-        <input value={input} onChange={e => setInput(e.target.value)} placeholder="Enter a url..." />
+        <input value={input} onChange={e => setInput(e.target.value)} placeholder="Enter a URL..." />
         <Link href={'/' + input} passHref legacyBehavior>
           <EnterButton onClick={() => setLoading(true)} />
         </Link>
