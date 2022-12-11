@@ -5,6 +5,7 @@ import Head from 'next/head';
 export default function Home() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+
   const EnterButton = React.forwardRef(({ onClick, href }, ref) => {
     return (
       <button href={href} onClick={onClick} ref={ref} disabled={loading || input === ""}>
@@ -21,7 +22,7 @@ export default function Home() {
       </Head>
       <h1>Website Text Sorter</h1>
       <h2>Enter URL (no https:// needed):</h2>
-      <div>
+      <div id='entry'>
         <input value={input} onChange={e => setInput(e.target.value)} placeholder="Enter a URL..." />
         <Link href={'/' + input} passHref legacyBehavior>
           <EnterButton onClick={() => setLoading(true)} />

@@ -2,10 +2,6 @@ h2 {
     font-size: 25px;
 }
 
-input {
-    width: 500px;
-}
-
 input, button{
     font-size: 22px;
 }
@@ -23,4 +19,15 @@ input, button{
     text-align: center;
     margin-right:auto;
     margin-left:auto;
+}
+
+#entry {
+    display:flex;
+    justify-content: center;
+}
+
+input {
+    flex-grow:1;
+    max-width:500px;
+    min-width:100px;
 }

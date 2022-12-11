@@ -35,8 +35,12 @@ export default function Page({ data }) {
 
 export async function getServerSideProps({ params }) {
     let slug = params.slug.join('/');
-    if (!slug.startsWith("https://") && !slug.startsWith("http://"))
-        slug = "https://" + params.slug.join('/');
+    if (slug.startsWith("https:/"))
+        slug = "https://" + slug.slice(7);
+    else if(slug.startsWith("http:/"))
+        slug = "http://" + slug.slice(6);
+    else
+        slug = "https://" + slug;
     let response;
     try {
         response = await axios.get(slug);
