@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 
 export default function Home() {
   const [input, setInput] = useState("");
@@ -14,8 +15,12 @@ export default function Home() {
 
   return (
     <div id='wrapper'>
+      <Head>
+        <title>Website Text Sorter</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <h1>Website Text Sorter</h1>
-      <h2>Enter URL (excluding https://):</h2>
+      <h2>Enter URL (no https:// needed):</h2>
       <div>
         <input value={input} onChange={e => setInput(e.target.value)} placeholder="Enter a URL..." />
         <Link href={'/' + input} passHref legacyBehavior>
@@ -23,7 +28,7 @@ export default function Home() {
         </Link>
       </div>
       <div id='disclaimer'>
-        Note: Does not work well on highly dynamic webpages.
+        Note: Does not work well on highly dynamic or complex webpages.
       </div>
     </div>
   )

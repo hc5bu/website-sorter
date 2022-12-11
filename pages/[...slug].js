@@ -1,27 +1,48 @@
+import Head from 'next/head';
 import axios from 'axios';
 const cheerio = require('cheerio');
 
 export default function Page({ data }) {
     if (data === false)
-        return <div>Invalid URL</div>;
+        return (
+            <div>
+                <Head>
+                    <title>Website Text Sorter</title>
+                    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                </Head>
+                Invalid URL
+            </div>);
     else if (data === null)
-        return <div>That URL is an API endpoint.</div>
+        return (
+            <div>
+                <Head>
+                    <title>Website Text Sorter</title>
+                    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                </Head>
+                That URL is an API endpoint.
+            </div>);
     else
         return (
             <div id='text-dump'>
+                <Head>
+                    <title>Website Text Sorter</title>
+                    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                </Head>
                 {data}
             </div>
         );
 }
 
 export async function getServerSideProps({ params }) {
-    const slug = "https://" + params.slug.join('/');
+    let slug = params.slug.join('/');
+    if (!slug.startsWith("https://") && !slug.startsWith("http://"))
+        slug = "https://" + params.slug.join('/');
     let response;
-    try{
+    try {
         response = await axios.get(slug);
     }
-    catch(error){
-        return {props:{data:false}}
+    catch (error) {
+        return { props: { data: false } }
     }
     if (typeof response.data !== "string")
         return { props: { data: null } }
@@ -36,7 +57,7 @@ export async function getServerSideProps({ params }) {
     t = t.join(" ");
     let tList = t.split(/\s/gm);
     tList = tList.filter(s => s !== "" && s.match(/\s/gm) === null);
-    tList = tList.map(s=>s.replaceAll(/(^\W+)|(\W+$)/gm, ""));
+    tList = tList.map(s => s.replaceAll(/(^\W+)|(\W+$)/gm, ""));
     tList.sort(function (a, b) {
         return a.toLowerCase().localeCompare(b.toLowerCase());
     });

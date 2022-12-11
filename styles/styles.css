@@ -18,3 +18,9 @@ input, button{
 #text-dump{
     overflow-wrap: break-word;
 }
+
+#wrapper {
+    text-align: center;
+    margin-right:auto;
+    margin-left:auto;
+}
