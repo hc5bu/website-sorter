@@ -58,7 +58,6 @@ export async function getServerSideProps({ params }) {
     }).each(function () {
         t.push($(this).text());
     });
-    console.log(t);
     t = t.join(" ");
     let tList = t.split(/\s/gm);
     tList = tList.filter(s => s !== "" && s.match(/\s/gm) === null);
