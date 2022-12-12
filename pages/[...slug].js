@@ -51,7 +51,7 @@ export async function getServerSideProps({ params }) {
     if (typeof response.data !== "string")
         return { props: { data: null } }
     const $ = cheerio.load(response.data);
-    $('script, link').remove();
+    $('script, link, style').remove();
     let t = [];
     $('body *').contents().filter(function () {
         return this.nodeType === 3; //Node.TEXT_NODE
